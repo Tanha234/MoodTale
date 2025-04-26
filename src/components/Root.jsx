@@ -7,7 +7,7 @@ function Root() {
   return (
     <div>
       <Navbar/>
-   <Home/>
+
       <Outlet /> {/* This will show Home, BlogList, Mood pages dynamically */}
     </div>
   );
