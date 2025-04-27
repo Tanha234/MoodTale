@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const Orbit = () => {
   return (
       
-    <div className="bg-slate-500 h-[600px] text-white relative overflow-hidden py-10">
+    <div className="bg-slate-500 h-[700px] text-white relative overflow-hidden py-10">
         
       
       <h2 className="text-3xl font-bold mb-10 text-center tracking-tight">
@@ -13,7 +13,7 @@ const Orbit = () => {
       </h2>
 
       {/* Circle Orbit */}
-      <div className="relative w-[400px] h-[400px] mx-auto mt-24">
+      <div className="relative w-[400px] h-[400px] mx-auto my-24">
         <OrbitingStats
           stats={[
             { number: 50, label: "Articles", icon: <FaPenNib />, color: "from-blue-400 to-blue-600", description: "Articles published" },

@@ -27,11 +27,14 @@ const Navbar = () => {
         <Link to="/" className="hover:underline py-2 px-4">
           Home
         </Link>
-        <Link to="/blog-list" className="hover:underline py-2 px-4">
+        <Link to="/blog" className="hover:underline py-2 px-4">
           Blogs
         </Link>
-        <Link to="/mood/happy" className="hover:underline py-2 px-4">
+        <Link to="/mood" className="hover:underline py-2 px-4">
           Mood Selection
+        </Link>
+        <Link to="/write" className="hover:underline py-2 px-4">
+        Create Blog
         </Link>
       </div>
 

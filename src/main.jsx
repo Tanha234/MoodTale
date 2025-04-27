@@ -7,6 +7,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Errorpage from './components/Errorpage/Errorpage';
 import { RouterProvider } from 'react-router';
+import Blogs from './components/Blogs/Blogs';
+import Blog from './components/Blog/Blog';
+import MoodSelection from './components/MoodSelection/MoodSelection';
+import MoodDetail from './components/MoodDetail/MoodDetail';
+import WriteBlog from './components/WriteBlog/WriteBlog';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +24,28 @@ const router = createBrowserRouter([
         element: <Home />,
        
       },
+      {
+        path:'/blog',
+        element:<Blogs/>
+      },
+      {
+        path:'/blog/:id',
+        element:<Blog/>
+      },
+      {
+        path:'/mood',
+        element:<MoodSelection/>
+      },
+      {
+        path:'/mood/:moodName',
+        element:<MoodDetail/>
+      
+      },
+      {
+        path:'/write',
+        element:<WriteBlog/>
+      }
+     
      
     ],
   },
