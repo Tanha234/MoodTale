@@ -1,62 +1,76 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const notes = [
-  { text: 'Pick a Clear Topic', color: 'bg-yellow-200' },
-  { text: 'Know Your Audience', color: 'bg-pink-200' },
-  { text: 'Create an Outline', color: 'bg-green-200' },
-  { text: 'Write a Strong Headline', color: 'bg-blue-200' },
-  { text: 'Hook Readers Early', color: 'bg-purple-200' },
-  { text: 'Use Simple Language', color: 'bg-orange-200' },
-  { text: 'Add Images or Examples', color: 'bg-red-200' },
-  { text: 'Format for Easy Reading', color: 'bg-lime-200' },
-  { text: 'Edit Ruthlessly', color: 'bg-cyan-200' },
-  { text: 'End with a Call-to-Action', color: 'bg-amber-200' },
+const quickTips = [
+  'Pick a Clear Topic',
+  'Know Your Audience',
+  'Create an Outline',
+  'Write a Strong Headline',
+  'Hook Readers Early',
+  'Use Simple Language',
+  'Add Images or Examples',
+  'Format for Easy Reading',
+  'Edit Ruthlessly',
+  'End with a Call-to-Action',
 ];
 
-function WriteBlog() {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    image: '',
-    tags: '',
-    content: '',
-  });
+const trendingTopics = [
+  'AI in Blogging',
+  'Sustainable Living',
+  'Personal Finance Tips',
+  'Mental Health Awareness',
+  'Travel on a Budget',
+];
 
-  const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
-  };
+const motivationalQuotes = [
+  "Write what should not be forgotten. — Isabel Allende",
+  "Start writing, no matter what. — Louis L’Amour",
+  "The first draft is just you telling yourself the story. — Terry Pratchett",
+];
 
-  const handleSubmit = (e) => {
+function BlogIdeasPage() {
+  const [titleKeyword, setTitleKeyword] = useState('');
+  const [generatedTitle, setGeneratedTitle] = useState('');
+
+  const handleTitleGenerate = (e) => {
     e.preventDefault();
-    console.log('Blog Posted:', formData);
-    alert('Blog posted successfully! 🎉');
-    setFormData({ title: '', description: '', image: '', tags: '', content: '' });
+    const ideas = [
+      `The Ultimate Guide to ${titleKeyword}`,
+      `How to Master ${titleKeyword} in 30 Days`,
+      `Top 10 Secrets About ${titleKeyword}`,
+      `${titleKeyword}: What You Need to Know`,
+      `Mistakes to Avoid in ${titleKeyword}`,
+    ];
+    setGeneratedTitle(ideas[Math.floor(Math.random() * ideas.length)]);
   };
 
   return (
-    <div className="min-h-screen bg-slate-500 py-10 px-6 sm:px-10 md:px-20 lg:px-28 flex flex-col md:flex-row gap-8">
-      
-      {/* Left Side Sticky Notes in Circle */}
-      <div className="w-full md:w-1/2 flex justify-center relative mt-16">
-        <div className="relative w-[400px] h-[400px]">
-          
-          {/* Center Text */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-slate-800 text-sm font-bold rounded-full shadow-lg flex items-center justify-center w-40 h-40">
-            How to Write a Blog
-          </div>
+    <div className="min-h-screen bg-slate-500 py-10 px-6 sm:px-10 md:px-20 lg:px-28 flex flex-col md:flex-row gap-10">
 
-          {/* Sticky Notes around */}
-          {notes.map((note, index) => {
-            const angle = (360 / notes.length) * index;
+      {/* Left Side */}
+      <div className="w-full md:w-1/2 flex flex-col gap-10">
+
+        {/* Sticky Notes (Quick Tips) */}
+        <div className="relative w-[400px] h-[400px] self-center">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-400 text-white text-sm font-bold rounded-full shadow-2xl flex items-center justify-center w-40 h-40">
+            Blog Writing Tips
+          </div>
+          {quickTips.map((tip, index) => {
+            const angle = (360 / quickTips.length) * index;
             const radius = 150;
             const x = radius * Math.cos((angle * Math.PI) / 180);
             const y = radius * Math.sin((angle * Math.PI) / 180);
 
+            const colors = [
+              'bg-pink-400', 'bg-yellow-400', 'bg-green-400',
+              'bg-blue-400', 'bg-purple-400', 'bg-red-300',
+              'bg-teal-400', 'bg-indigo-400', 'bg-orange-400', 'bg-rose-400'
+            ];
+
             return (
               <motion.div
                 key={index}
-                className={`${note.color} p-3 rounded-xl shadow-md text-center font-semibold text-gray-700 text-xs absolute`}
+                className={`${colors[index % colors.length]} p-3 rounded-xl shadow-lg text-center font-bold text-white text-xs absolute`}
                 style={{
                   width: '80px',
                   height: '80px',
@@ -73,91 +87,142 @@ function WriteBlog() {
                 transition={{ delay: index * 0.1 }}
               >
                 <div style={{ transform: `rotate(-${angle}deg)`, width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  {note.text}
+                  {tip}
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Progress Tracker */}
+        <div className="bg-green-300 p-6 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-green-800 mb-4">🛤️ Your Blog Writing Progress</h2>
+          <ol className="list-decimal list-inside space-y-2 text-green-900 font-semibold">
+            <li>Choose Your Topic</li>
+            <li>Research & Outline</li>
+            <li>Write the First Draft</li>
+            <li>Edit & Format</li>
+            <li>Publish & Share</li>
+          </ol>
+        </div>
+
+        {/* 🔥 Tiny Inspiration Card */}
+        <motion.div 
+          className="bg-gradient-to-r from-yellow-200 to-pink-200 p-6 rounded-3xl shadow-xl mt-2"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-2xl font-bold text-slate-800 mb-4">💬 Writing Inspiration</h2>
+          <p className="text-slate-600 italic text-lg">
+            "You can always edit a bad page. You can’t edit a blank page."
+          </p>
+          <p className="mt-4 text-right text-slate-500 text-sm">– Jodi Picoult</p>
+        </motion.div>
+        
+
       </div>
 
-      {/* Right Side Form */}
-      <form onSubmit={handleSubmit} className="w-full bg-purple-200 md:w-1/2 bg-white p-8 rounded-2xl shadow-xl space-y-6">
-        <h1 className="text-3xl font-bold text-slate-800 mb-6 text-center">Post Your Blog</h1>
+      {/* Right Side */}
+      <div className="w-full md:w-1/2 flex flex-col gap-10">
 
-        <div>
-          <label className="block text-gray-700 font-semibold mb-2">Title</label>
-          <input 
-            type="text" 
-            name="title" 
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="Enter blog title"
-            required
-          />
+        {/* Title Generator */}
+        <div className="bg-pink-200 p-6 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-pink-800 mb-4">⚡ Blog Title Generator</h2>
+          <form onSubmit={handleTitleGenerate} className="flex flex-col gap-4">
+            <input 
+              type="text"
+              value={titleKeyword}
+              onChange={(e) => setTitleKeyword(e.target.value)}
+              className="border-2 border-pink-500 p-3 rounded-lg focus:ring-2 focus:ring-pink-500 focus:outline-none"
+              placeholder="Enter a keyword (e.g., Travel, Fitness)"
+              required
+            />
+            <button 
+              type="submit"
+              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-lg transition-all"
+            >
+              Generate Title
+            </button>
+          </form>
+          {generatedTitle && (
+            <div className="mt-4 p-4 bg-green-200 text-green-900 rounded-lg font-semibold shadow-inner">
+              Suggested Title: "{generatedTitle}"
+            </div>
+          )}
         </div>
 
-        <div>
-          <label className="block text-gray-700 font-semibold mb-2">Short Description</label>
-          <textarea 
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="Write a short description"
-            rows="3"
-            required
-          ></textarea>
+        {/* Trending Topics */}
+        <div className="bg-blue-300 p-6 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-blue-800 mb-4">🔥 Trending Topics</h2>
+          <ul className="space-y-3 text-blue-900 font-semibold">
+            {trendingTopics.map((topic, index) => (
+              <li key={index} className="flex items-center gap-2">
+                <span className="text-blue-600 text-lg">•</span> {topic}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div>
-          <label className="block text-gray-700 font-semibold mb-2">Image URL</label>
-          <input 
-            type="url" 
-            name="image" 
-            value={formData.image}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="Enter cover image URL"
-          />
+        {/* Motivational Quotes */}
+        <div className="bg-purple-300 p-6 rounded-2xl shadow-md">
+          <h2 className="text-2xl font-bold text-purple-800 mb-4">💬 Motivation for You</h2>
+          <div className="space-y-4 text-purple-900 italic font-semibold">
+            {motivationalQuotes.map((quote, index) => (
+              <blockquote key={index}>
+                "{quote}"
+              </blockquote>
+            ))}
+          </div>
         </div>
 
-        <div>
-          <label className="block text-gray-700 font-semibold mb-2">Tags (comma separated)</label>
-          <input 
-            type="text" 
-            name="tags" 
-            value={formData.tags}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="e.g. motivation, writing, coding"
-          />
+        {/* Bottom Section: Two Columns */}
+        <div className="flex flex-col md:flex-row gap-3">
+
+          {/* ✏️ Mini Idea Board */}
+          <div className="bg-teal-300 p-6 rounded-2xl shadow-md w-full md:w-1/2">
+            <h2 className="text-2xl font-bold text-teal-800 mb-4">✏️ Mini Idea Board</h2>
+            <ul className="space-y-3 text-teal-900 font-semibold">
+              {[
+                "How AI is Changing Everyday Life",
+                "Best Morning Routines for Success",
+                "Top 10 Budget Travel Destinations",
+                "Simple Recipes for Busy People",
+                "Mental Health Tips for Creatives",
+              ].map((idea, index) => (
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-teal-700 text-lg">•</span> {idea}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ✅ Final Blog Checklist */}
+          <div className="bg-orange-300 p-6 rounded-2xl shadow-md w-full md:w-1/2">
+            <h2 className="text-2xl font-bold text-orange-800 mb-4">✅ Final Blog Checklist</h2>
+            <ul className="space-y-3 text-orange-900 font-semibold">
+              {[
+                "Clear Topic Selected",
+                "Audience Understood",
+                "Strong Headline Written",
+                "Simple Language Used",
+                "Images/Examples Added",
+                "Proofread and Edited",
+                "Clear Call-to-Action Given",
+              ].map((item, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <span className="text-green-600 text-xl">✔️</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
-        <div>
-          <label className="block text-gray-700 font-semibold mb-2">Blog Content</label>
-          <textarea 
-            name="content"
-            value={formData.content}
-            onChange={handleChange}
-            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-            placeholder="Write your blog here..."
-            rows="8"
-            required
-          ></textarea>
-        </div>
-
-        <button 
-          type="submit"
-          className="bg-blue-400 hover:bg-yellow-500 text-white font-bold py-3 px-8 rounded-full w-full transition-all"
-        >
-          Post Blog
-        </button>
-      </form>
+      </div>
 
     </div>
   );
 }
 
-export default WriteBlog;
+export default BlogIdeasPage;

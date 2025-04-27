@@ -34,7 +34,7 @@ const Navbar = () => {
           Mood Selection
         </Link>
         <Link to="/write" className="hover:underline py-2 px-4">
-        Create Blog
+        Blog Booster
         </Link>
       </div>
 
