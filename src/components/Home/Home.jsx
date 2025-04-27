@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BloggerFeature from './BloggerFeature';
+import HomeExtraSections from './Orbit';
+import TrendingBlogTopics from './TrendingBlogTopics';
+import BlogOfTheDay from './BlogOfTheDay';
+import Orbit from './Orbit';
 
 
 function Home() {
@@ -92,67 +96,77 @@ function Home() {
         </div>
       </section>
 
-      {/* Blog Section */}
-      <section className="py-16 px-8 md:px-44 bg-slate-500">
-        <motion.h2
-          className="text-4xl font-bold   text-white font-bold text-center mb-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+     {/* Blog Section */}
+<section className="py-16 px-6 sm:px-10 md:px-20 lg:px-44 bg-slate-500">
+  <motion.h2
+    className="text-4xl font-bold text-white text-center mb-16"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+  >
+    Latest Blogs
+  </motion.h2>
+
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    {/* Big Blog */}
+    <motion.div
+      className="lg:col-span-2 p-6 rounded-lg bg-white cursor-pointer"
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <img
+        src={bigBlog.img}
+        alt={bigBlog.title}
+        className="w-full h-64 object-cover rounded-lg mb-4"
+      />
+      <h3 className="text-2xl font-semibold mb-4">{bigBlog.title}</h3>
+      <p className="text-lg mb-4">{bigBlog.description}</p>
+      <Link
+        to={bigBlog.link}
+        className="text-slate-800 hover:text-yellow-400 transition"
+      >
+        Read More
+      </Link>
+    </motion.div>
+
+    {/* Small Blogs */}
+    <div className="space-y-6">
+      {smallBlogs.map((blog, index) => (
+        <motion.div
+          key={blog.id}
+          className="p-6 rounded-lg bg-white cursor-pointer"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: index * 0.1 }}
+          onClick={() => handleSwap(blog)}
         >
-          Latest Blogs
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Big Blog */}
-          <motion.div
-            className="col-span-2 p-6  rounded-lg  cursor-pointer"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
+          <img
+            src={blog.img}
+            alt={blog.title}
+            className="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h3 className="text-base font-semibold mb-2">{blog.title}</h3>
+          <Link
+            to={blog.link}
+            className="text-slate-900 hover:text-yellow-400 text-sm transition"
           >
-            <img
-              src={bigBlog.img}
-              alt={bigBlog.title}
-              className="w-full h-64 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-2xl font-semibold mb-4">{bigBlog.title}</h3>
-            <p className="text-lg mb-4">{bigBlog.description}</p>
-            <Link to={bigBlog.link} className="text-slate-800 hover:text-yellow-400 transition">
-              Read More
-            </Link>
-          </motion.div>
+            Read More
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
-          {/* Small Blogs */}
-          <div className="col-span-1 space-y-3">
-            {smallBlogs.map((blog, index) => (
-              <motion.div
-                key={blog.id}
-                className="p-6  rounded-lg  cursor-pointer"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: index * 0.1 }}
-                onClick={() => handleSwap(blog)}
-              >
-                <img
-                  src={blog.img}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-sm font-semibold mb-2">{blog.title}</h3>
-                
-                <Link to={blog.link} className="text-slate-900 hover:text-yellow-400 text-sm transition">
-                  Read More
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
    
+<TrendingBlogTopics/>
+<Orbit/>
 <BloggerFeature/>
+<BlogOfTheDay/>
+
     </div>
   );
 }

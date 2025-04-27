@@ -6,8 +6,12 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {},
+ theme: {
+    extend: {
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+      },
+    },
   },
   plugins: [],
 }

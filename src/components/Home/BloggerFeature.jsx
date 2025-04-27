@@ -10,7 +10,7 @@ const BloggerFeature = () => {
       name: "Sarah Johnson",
       intro:
         "Sarah is a renowned mindfulness and healing blogger, known for her insightful articles on self-care and mental clarity.",
-      reason: "Sarah's blog has helped thousands of people improve their emotional well-being through mindfulness techniques.",
+      reason: "Sarah's blog has helped thousands of people improve their emotional well-being through mindfulness .",
       image: "https://randomuser.me/api/portraits/women/65.jpg",
     },
     {
@@ -24,7 +24,7 @@ const BloggerFeature = () => {
       name: "Emily Williams",
       intro:
         "Emily is a mental health advocate who writes regularly about coping with stress and building resilience in everyday life.",
-      reason: "Emily's honest and empathetic approach to mental health has earned her a loyal following of readers.",
+      reason: "Emily's honest and empathetic approach to mental health has earned her a loyal following .",
       image: "https://randomuser.me/api/portraits/women/68.jpg",
     },
     {
