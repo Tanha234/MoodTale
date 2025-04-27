@@ -13,7 +13,7 @@ const Orbit = () => {
       </h2>
 
       {/* Circle Orbit */}
-      <div className="relative w-[400px] h-[400px] mx-auto my-24">
+      <div className="relative w-[400px] h-[400px] mx-auto my-20">
         <OrbitingStats
           stats={[
             { number: 50, label: "Articles", icon: <FaPenNib />, color: "from-blue-400 to-blue-600", description: "Articles published" },

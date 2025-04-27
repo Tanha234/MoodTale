@@ -12,6 +12,7 @@ import Blog from './components/Blog/Blog';
 import MoodSelection from './components/MoodSelection/MoodSelection';
 import MoodDetail from './components/MoodDetail/MoodDetail';
 import WriteBlog from './components/WriteBlog/WriteBlog';
+import About from './components/About/About';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
        
+      },
+      {
+        path:'/about',
+        element:<About/>
       },
       {
         path:'/blog',
@@ -41,10 +46,7 @@ const router = createBrowserRouter([
         element:<MoodDetail/>
       
       },
-      {
-        path:'/write',
-        element:<WriteBlog/>
-      }
+      
      
      
     ],

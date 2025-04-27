@@ -27,28 +27,19 @@ const Navbar = () => {
         <Link to="/" className="hover:underline py-2 px-4">
           Home
         </Link>
+        <Link to="/about" className="hover:underline py-2 px-4">
+      About
+        </Link>
         <Link to="/blog" className="hover:underline py-2 px-4">
           Blogs
         </Link>
         <Link to="/mood" className="hover:underline py-2 px-4">
           Mood Selection
         </Link>
-        <Link to="/write" className="hover:underline py-2 px-4">
-        Blog Booster
-        </Link>
+        
       </div>
 
-      {/* Right-side User & Login Icons */}
-      <div className="flex gap-4 items-center">
-        <Link to="/login" className="hover:underline">
-          <i className="fas fa-sign-in-alt text-md"></i> {/* Login Icon */}
-          Login
-        </Link>
-        <Link to="/profile" className="hover:underline">
-          <i className="fas fa-user-circle text-lg"></i> 
-       
-        </Link>
-      </div>
+    
     </nav>
   );
 };
