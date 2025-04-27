@@ -28,13 +28,16 @@ const Navbar = () => {
           Home
         </Link>
         <Link to="/about" className="hover:underline py-2 px-4">
-      About
+       About
         </Link>
         <Link to="/blog" className="hover:underline py-2 px-4">
           Blogs
         </Link>
         <Link to="/mood" className="hover:underline py-2 px-4">
           Mood Selection
+        </Link>
+        <Link to="/write" className="hover:underline py-2 px-4">
+        Blog Booster
         </Link>
         
       </div>

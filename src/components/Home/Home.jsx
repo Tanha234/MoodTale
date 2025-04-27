@@ -127,11 +127,11 @@ function Home() {
           </motion.div>
 
           {/* Small Blogs */}
-          <div className="space-y-6">
+          <div className="space-y-3 ">
             {smallBlogs.map((blog, index) => (
               <motion.div
                 key={blog.id}
-                className="p-6 rounded-lg bg-white cursor-pointer"
+                className="p-6 rounded-lg bg-white cursor-pointer h-70"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: index * 0.1 }}

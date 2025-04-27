@@ -47,6 +47,12 @@ const router = createBrowserRouter([
       
       },
       
+      {
+        path:'/write',
+        element:<WriteBlog/>
+      
+      },
+      
      
      
     ],
